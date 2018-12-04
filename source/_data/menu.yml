@@ -1,0 +1,65 @@
+
+# CONTENT
+main:
+ -
+  id: introducing-artas
+  link: welcome
+  title: ARTAS
+  classes: 'scroll-to'
+
+
+ -
+  id: how-artas-works
+  link: how-artas-works
+  title: How ARTAS Works
+  classes: 'scroll-to'
+
+
+ -
+  id: hair-loss
+  link: are-you-a-candidate
+  title: Hair Loss
+  classes: 'scroll-to'
+
+
+ -
+  id: why-artas
+  link: what-sets-artas-apart
+  title: Why ARTAS?
+  classes: 'scroll-to'
+
+
+
+
+
+quicklinks:
+ -
+  id: dr-michael-woffeld
+  link: http://www.drwolfeld.com/michael-wolfeld-plastic-surgeon-nyc.php
+  title: Dr. Michael Wolffeld
+  classes: ''
+
+
+ -
+  id: before-and-after-gallery
+  link: http://www.drwolfeld.com/photo-gallery.php
+  title: Before and After Gallery
+  classes: ''
+
+
+
+
+
+locations:
+ -
+  id: new-york-city-nyc-office
+  link: http://www.drwolfeld.com/new-york-plastic-surgery-office.php
+  title: New York City, NYC
+  classes: ''
+
+
+ -
+  id: hackensack-nj-office
+  link: http://www.drwolfeld.com/new-jersey-plastic-surgery-office.php
+  title: Hackensack, NJ Office
+  classes: ''

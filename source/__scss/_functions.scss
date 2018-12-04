@@ -1,0 +1,52 @@
+/* -------------------------------------------------- */
+/* STRIP UNIT
+/* -------------------------------------------------- */
+
+// This function will strip units from number values.
+
+@function strip-unit($number) {
+
+	@if type-of($number) == 'number' and not unitless($number) {
+
+		@return $number / ($number * 0 + 1);
+
+	}
+
+	@return $number;
+
+}
+
+
+/* -------------------------------------------------- */
+/* PX TO EM
+/* -------------------------------------------------- */
+
+// For recognition and readibility, you will most likley use 'px' units in your '_settings' file.
+// Although, because this framework is mobile-first this function will convert all 'px' based units to the more reponsive and flexible 'em' unit.
+
+$basepx: $base;
+
+@function pxtoem($px, $basepx) {
+
+	@return ( strip-unit($px) / strip-unit($basepx) ) + 0em;
+
+}
+
+
+/* -------------------------------------------------- */
+/* EM TO PX
+/* -------------------------------------------------- */
+
+// Converts 'em' unit to 'px' unit.
+
+@function emtopx($target, $context: $base-font-size-em) {
+
+	@if $target == 0 {
+
+		@return 0
+
+	}
+	
+	@return ($target / 1em) * ($context / 1em) * 16 + 0px;
+
+}

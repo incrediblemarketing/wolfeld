@@ -1,0 +1,465 @@
+{
+	
+	"options": {
+		"name": "Wolfeld",
+		"site": "https://domain.com",
+		"siteVersion": "0.0.1",
+		"styleguideVersion": "0.0.1",
+		"production": true,
+		"serviceworker": true,
+		"appBanner": false,
+		"sourcemaps": false,
+		"previewURL": "index.html"
+	},
+
+	"root": {
+		"source": "source/",
+		"build": "build/",
+		"scripts": "scripts/",
+		"assets": "assets/"
+	},
+
+	"accessibility": {
+		"allow": false,
+		"generateReport": false
+	},
+
+	"tracking": {
+
+		"fullstory": {
+			"allow": true,
+			"id": "GWSRJ"
+		},
+
+		"ga": {
+			"allow": false,
+			"url": "domain.com",
+			"id": "UA-00000000-0",
+			"anonymizeIp": true,
+			"bounceTime": "",
+			"demographics": true,
+			"linkAttribution": false,
+			"minify": true,
+			"nonceTag": false,
+			"require": "urlChangeTracker",
+			"sendPageView": true,
+			"tagPlacement": "head"
+		},
+
+		"gtm": {
+			"allow": false,
+			"id": "GTM-0000000"
+		}
+
+	},
+
+	"robots": {
+		"useragent": "*",
+		"allow": [""],
+		"disallow": ["/assets/", "/cgi-bin/", "/downloads/", "/fonts/", "/dialog/", "/scripts/"]
+	},
+
+	"versioning": {
+
+		"scripts": {
+			"allow": true,
+			"prefix": ".",
+			"suffix": ".min"
+		},
+
+		"images": {
+			"allow": false,
+			"prefix": ".",
+			"suffix": ""
+		}
+
+	},
+
+	"fonts": {
+		"allow": true,
+		"source": "googlefonts",
+		"families": ["Martel:300,400", "Open+Sans"],
+		"id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+		"api": "//use.edgefonts.net",
+		"urls": ["/fonts.css"],
+		"text": null,
+		"version": 12345,
+		"loadAllFonts": true,
+		"classes": true,
+		"events": true,
+		"context": ["my-child"],
+		"timeout": 5000
+	},
+
+	"images": {
+
+		"raster": {
+			"level": 5,
+			"interlaced": true,
+			"progressive": true
+		},
+
+		"sprite": {
+			"files": "sprites/",
+			"convert": {
+						"allow": true,
+						"format": "png",
+						"scale": "1"
+			},
+			"mode": "sprite",
+			"class": "sprite-wrapper",
+			"selector": "sprite",
+			"layout": "vertical",
+			"padding": 0,
+			"asyncTransforms": false,
+			"preview": false
+		},
+
+		"svg": {
+			"convert": {
+						"allow": true,
+						"format": "png",
+						"scale": "2"
+			},
+			"cleanup": true,
+			"minify": true,
+			"removeEmptyText": true,
+			"removeMetadata": true,
+			"removeTitle": true,
+			"removeRaster": true,
+			"removeScript": true,
+			"removeStyle": true,
+			"removeViewBox": true
+		},
+
+		"webp": {
+			"convert": true,
+			"level": 0,
+			"quality": 100,
+			"alphaQuality": 100,
+			"sharpness": 0
+		}
+
+	},
+
+	"html": {
+		"files": "_pages/**/*.{html,hbs,handlebars}",
+		
+		"root": "_pages/",
+		"layouts": "_layouts/",
+		"partials": "_partials/",
+		"helpers": "_helpers/",
+		"data": "_data/",
+
+		"dialog": {
+			"files": "_dialog/**/*.{html,hbs,handlebars}",
+			"output": "dialog/"
+		},
+		
+		"inlineScripts": {
+			"js": "__scripts/*.js",
+			"css": "__css/critical.css"
+		}
+	},
+	
+	"vendors": {
+		"allow": false,
+		"bundle": "vendors.js",
+		"lint": false,
+		"attribute": "async",
+		"files": "__vendors/*.js"
+	},
+
+	"styleguide": {
+		"assets": ["!common/**/*.webp", "common/**/*"]
+	},
+
+	"optimizations": {
+		"js": {
+			"lint": true,
+			"dropConsole": true,
+			"ie8Support": false,
+			"keepfnames": false,
+			"mangle": true,
+			"removeDeadCode": true,
+			"toplevel": false
+		},
+		"css": {
+			"lint": true,
+			"autoprefix": true,
+			"cascade": true,
+			"flexbox": true,
+			"grid": false,
+			"log": true,
+			"preserveVariables": false,
+			"rebase": true,
+			"removeDuplicatedProperties": false,
+			"removeOutdatedPrefixes": true,
+			"supports": true,
+			"support": ["last 2 versions", "ie >= 9", "android >= 4.4", "ios >= 7"]
+		}
+	},
+
+	"js": {
+		"bundle": "app.js",
+		"attribute": "defer",
+		"root": "__lib/",
+		
+		"files": ["<JQUERY>",
+				  "__lib/jquery/jquery.js",
+
+
+				  "<PLUGINS>",
+				  ">>>>>lib/jquery/jquery.mobile.js",
+				  "__lib/jquery/plugins/jquery.easing.js",
+				  "__lib/assets/selectorcache.js",
+
+
+				  "<POLYFILLS / FALLBACK>",
+				  "__lib/polyfills/modernizr.js",
+				  "__lib/polyfills/intersectionbserver.js",
+				  ">>>>>__lib/polyfills/objectfit.js",
+				  ">>>>>__lib/polyfills/webp.js",
+
+
+				  "<DATA>",
+				  "__lib/assets/cookies.js",
+				  ">>>>>__lib/assets/loadjson.js",
+
+
+				  "<UTILITIES>",
+				  ">>>>>__lib/assets/backbone.js",
+				  "__lib/assets/lazyload.js",
+				  "__lib/assets/passiveeventlisteners.js",
+				  "__lib/assets/print.js",
+				  ">>>>>__lib/assets/scrolllock.js",
+				  ">>>>>__lib/assets/scrollprogress.js",
+				  "__lib/assets/scrollstartstop.js",
+				  ">>>>>__lib/assets/smoothstate.js",
+				  "__lib/assets/stickykit.js",
+				  "__lib/assets/underscore.js",
+				  "__lib/assets/visibility.js",
+
+
+				  "<UI>",
+				  "__lib/assets/headroom.js",
+				  ">>>>>__lib/assets/menuaim.js",
+
+
+				  "<FX>",
+				  ">>>>>__lib/assets/granim.js",
+				  ">>>>>__lib/particles/particles.core.js",
+				  ">>>>>__lib/particles/particles.app.js",
+				  ">>>>>__lib/assets/neuralnetwork.js",
+
+
+				  "<ELEMENT MANIPULATION>",
+				  ">>>>>__lib/assets/adaptivebackground.js",
+				  ">>>>>__lib/assets/duotone.js",
+				  ">>>>>__lib/assets/tilt.js",
+
+
+				  "<SCROLL MANIPULATION>",
+				  "__lib/dzsparallaxer/dzsparallaxer.js",
+				  "__lib/assets/emergence.js",
+				  ">>>>>__lib/assets/rellax.js",
+				  ">>>>>__lib/assets/scrollama.js",
+				  ">>>>>__lib/assets/scrollissimo.js",
+				  ">>>>>__lib/assets/scrollme.js",
+
+
+				  "<ANIMATION ENGINE (GSAP)>",
+				  "__lib/gsap/TweenMax.js",
+				  ">>>>>__lib/gsap/TimelineMax.js",
+				  ">>>>>__lib/gsap/plugins/BezierPlugin.js",
+				  ">>>>>__lib/gsap/plugins/ColorPropsPlugin.js",
+				  ">>>>>__lib/gsap/plugins/CSSPlugin.js",
+				  ">>>>>__lib/gsap/plugins/CSSRulePlugin.js",
+				  ">>>>>__lib/gsap/plugins/DirectionalRotationPlugin.js",
+				  ">>>>>__lib/gsap/plugins/ModifiersPlugin.js",
+				  ">>>>>__lib/gsap/plugins/ScrollToPlugin.js",
+				  ">>>>>__lib/gsap/plugins/TextPlugin.js",
+
+				  "<ANIMATION ENGINE (GSAP CLUB GREENSOCK PLUGINS)>",
+				  ">>>>>__lib/gsap/plugins/DrawSVGPlugin.js",
+				  ">>>>>__lib/gsap/plugins/MorphSVGPlugin.js",
+				  ">>>>>__lib/gsap/plugins/Physics2DPlugin.js",
+				  ">>>>>__lib/gsap/plugins/PhysicsPropsPlugin.js",
+				  ">>>>>__lib/gsap/plugins/ScrambleTextPlugin.js",
+				  "__lib/gsap/plugins/SplitTextPlugin.js",
+				  ">>>>>__lib/gsap/plugins/ThrowPropsPlugin.js",
+
+
+				  "<3D LIBS>",
+				  ">>>>>__lib/three/three.js",
+				  ">>>>>__lib/three/plugins/three.controls.js",
+
+
+				  "<OTHER LIBS>",
+				  ">>>>>__lib/p5/p5.js",
+				  ">>>>>__lib/p5/plugins/p5.dom.js",
+				  ">>>>>__lib/p5/plugins/p5.sound.js",
+
+
+				  "<COMPONENTS>",
+				  ">>>>>__lib/fullpage/plugins/dragandmove.js",
+				  ">>>>>__lib/fullpage/plugins/scrolloverflow.js",
+				  ">>>>>__lib/fullpage/fullpage.extensions.js",
+				  ">>>>>__lib/fullpage/fullpage.js",
+
+				  "__lib/metafizzy/flickity.js",
+				  "__lib/metafizzy/imagesloaded.js",
+				  ">>>>>__lib/metafizzy/isotope.js",
+				  "__lib/metafizzy/plugins/background.lazyload.js",
+
+
+				  "<WIDGETS>",
+				  ">>>>>__lib/smart-app-banner/smart-app-banner.js",
+				  "__lib/waves/waves.js",
+
+
+				  "<FRAMEWORK>",
+				  "__lib/framework/foundation.js",
+				  ">>>>>__lib/framework/plugins/what-input.js",
+
+
+				  "<APP>",
+				  "__lib/options.js",
+				  "__lib/detect.js",
+				  "__lib/animations/*.js",
+				  "__lib/utilities.js",
+				  "__lib/components.js",
+				  "__lib/ui.js",
+				  ">>>>>__lib/hashnav.js",
+				  "__lib/notice.js",
+				  "__lib/pages.js",
+				  ">>>>>__lib/transition.js",
+				  "__lib/app.js",
+				  ">>>>>__lib/benchmark.js"
+				 ]
+	
+	},
+
+	"css": {
+		"bundle": "app.css",
+		"root": "__css/",
+
+		"files": ["<INIT>",
+				  "__css/options.css",
+				  "fonts/fontawesome.css",
+
+
+				  "<JQUERY>",
+				  ">>>>>__lib/jquery/jquery.mobile.css",
+
+
+				  "<DETECTION / FALLBACKS / POLYFILLS>",
+
+
+				  "DATA>",
+				  "FORMS>",
+				  "WRAPPERS>",
+				  "UTILITIES>",
+				  "UI",
+
+
+				  "<FX>",
+
+
+				  "<DOM>",
+
+
+				  "<SCROLL MANIPULATION>",
+				  "__lib/dzsparallaxer/dzsparallaxer.css",
+
+
+				  "<3D>",
+				  "<OTHER>",
+
+
+				  "<COMPONENTS>",
+				  ">>>>>__lib/fullpage/fullpage.css",
+				  ">>>>>__lib/fullpage/nav.css",
+				  "__lib/metafizzy/flickity.css",
+
+
+				  "<WIDGETS>",
+				  "__lib/waves/waves.css",
+
+
+				  "<FRAMEWORK>",
+				  "__lib/framework/foundation.css",
+				  ">>>>>__lib/framework/foundation.rtl.css",
+
+
+				  "<ELEMENTS>",
+				  "__css/elements/*.css",
+
+
+				  "<UI>",
+				  "__css/ui/*.css",
+
+
+				  "<COMPONENTS>",
+				  "__css/components/*.css",
+
+
+				  "<UTILITIES>",
+				  "__css/utilities/*.css",
+
+
+				  "<APP>",
+				  "__lib/animations/*.css",
+				  "__css/copy.css",
+				  "__css/layout.css",
+				  "__css/rules.css",
+				  "__css/theme.css",
+				  "__css/responsive.css",
+				  "__css/accessibility.css"
+				 ]
+	
+	},
+
+	"scss": {
+		"bundle": "app.css",
+		"root": "__scss/"
+	},
+
+	"sync": {
+		"notify": true,
+
+		"browsers": "default",
+		"host": "",
+		"https": false,
+		"localOnly": false,
+		"online": true,
+		"port": "3000",
+
+		"cors": true,
+		"open": "external",
+		"tunnel": false,
+		"xip": false,
+
+		"codeSync": true,
+		"injectChanges": true,
+		"watch": true,
+
+		"ghostMode": true,
+
+		"reloadDebounce": 0,
+		"reloadDelay": 1000,
+		"reloadThrottle": 0,
+		
+		"scrollElements": [],
+		"scrollElementMapping": [],
+		"scrollProportionally": true,
+		"scrollRestoreTechnique": "window.name",
+		"scrollThrottle": 0,
+
+		"logConnections": true,
+		"logFileChanges": false,
+		"logLevel": "info",
+		"timestamps": true
+	}
+	
+}

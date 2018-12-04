@@ -1,0 +1,100 @@
+
+
+
+
+
+
+h1 {
+
+  // Minimum font-size
+  font-size: 22px;
+
+
+  // Font-size between small and medium viewpoints
+  @media (min-width: map-get($breakpoints, xs) ) {
+
+    $map: ( map-get($breakpoints, xs) : 18px,
+            map-get($breakpoints, sm) : 20px );
+
+    font-size: linear-interpolation($map);
+
+  }
+
+
+  // Font-size between small and medium viewpoints
+  @media (min-width: map-get($breakpoints, sm) ) {
+
+    $map: ( map-get($breakpoints, sm) : 22px,
+            map-get($breakpoints, md) : 24px );
+
+    font-size: linear-interpolation($map);
+
+  }
+
+
+  // Font-size between medium and large viewpoints
+  @media (min-width: map-get($breakpoints, md) ) {
+
+    $map: ( map-get($breakpoints, md) : 24px,
+            map-get($breakpoints, lg) : 34px );
+
+    font-size: linear-interpolation($map);
+
+  }
+
+
+  // Maximum font-size
+  @media (min-width: map-get($breakpoints, lg) ) {
+
+    font-size: 34px;
+
+  }
+
+}
+
+
+
+
+
+
+.text {
+	@include color($type: 'hex', $property: 'color', $prefix: '-');
+}
+
+
+.background {
+	@include color($type: 'rgba', $property: 'background-color', $prefix: '-', $alpha: 1);
+}
+
+
+.test {
+	color: map-get( map-get($colors, primary), light);
+}
+
+/*
+
+.background {
+    @include color-rgba;
+}
+
+
+@include media("screen", ">=md") {
+
+    .padding-xs {
+        font-size: 1rem;
+    }
+
+}
+
+
+
+
+.text {
+	@include color-modifiers;
+}
+
+
+.background {
+	@include background-color-modifiers;
+}
+*/

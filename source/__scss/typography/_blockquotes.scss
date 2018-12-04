@@ -1,0 +1,24 @@
+/* -------------------------------------------------- */
+/* BLOCKQUOTES
+/* -------------------------------------------------- */    
+
+blockquote {
+    position: relative;
+    width: 100%;
+    /*border-left: 1px solid $white-color;*/
+}
+
+blockquote::after {
+    @include icon('FontAwesome');
+
+    content: '\f10d';
+    top: -0.25em;
+    left: 0.12em;
+    font-size: pxtoem($base, $basepx);
+    opacity: 0.15;
+    z-index: auto;
+}
+
+blockquote p, cite {
+    color: map-get(map-get($colors, primary), base);
+}

@@ -1,0 +1,37 @@
+/* -------------------------------------------------- */
+/* LINKS
+/* -------------------------------------------------- */
+
+a:not(.button):not([class^='social-icon-']):not([class='card']) {
+
+	text-transform: $transition;
+
+	&:hover, &:focus {
+		text-decoration: none;
+    }
+	&:active {
+		color: map-get(map-get($colors, primary), base);
+		text-decoration: none;
+		background-color: transparent;
+	}
+
+}
+
+/* HELPERS */
+a.inactive,
+a.disabled {
+	@include disabled;
+
+	color: map-get(map-get($colors, primary), base);
+}
+
+/*
+a, blockquote, button, div, figcaption, h1, h2, h3, h4, h5, h6, input, label, dl, li, ol, p, select, span, table, textarea {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	letter-spacing: inherit;
+	text-align: inherit;
+	border: 0;
+}
+*/

@@ -1,0 +1,30 @@
+/* -------------------------------------------------- */
+/* DISABLED / INACTIVE
+/* -------------------------------------------------- */
+
+@mixin disabled {
+	cursor: pointer;
+	pointer-events: none;
+}
+
+
+/* -------------------------------------------------- */
+/* PSEUDO
+/* -------------------------------------------------- */
+
+@mixin pseudo {
+	content: '';
+	display: block;
+	position: absolute;
+}
+
+
+/* -------------------------------------------------- */
+/* FONT AWESOME
+/* -------------------------------------------------- */
+
+@mixin icon($property) {
+	content: '';
+	position: absolute;
+	font-family: $property;
+}

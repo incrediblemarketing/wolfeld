@@ -1,0 +1,138 @@
+/* -------------------------------------------------- */
+/* HEADER STYLES
+/* -------------------------------------------------- */
+
+// EXTEND
+%header {
+    content: '';
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 10%;
+    height: 4px;
+    border-radius: 0;
+}
+
+
+/* -------------------------------------------------- */
+/* BLOCK
+/* -------------------------------------------------- */
+
+.header::after,
+.header-right::after,
+.header-left::after,
+.header-center::after {
+    @extend %header;
+}
+
+
+/* -------------------------------------------------- */
+/* ELEMENT
+/* -------------------------------------------------- */
+
+.header-left {
+    @include align($type: 'block', $alignment: 'left');
+
+    @include respond-to($media: 'xs', $prefix: '-', $suffix: '::after') {
+        @include align('block', 'left');
+    };
+}
+
+.header-right {
+    @include align($type: 'block', $alignment: 'right');
+
+    @include respond-to($media: 'xs', $prefix: '-', $suffix: '::after') {
+        @include align('block', 'right');
+    };
+}
+
+.header-center {
+    @include align($type: 'block', $alignment: 'center');
+
+    @include respond-to($media: 'xs', $prefix: '-', $suffix: '::after') {
+        @include align('block', 'center');
+    };
+}
+
+
+/* -------------------------------------------------- */
+/* MODIFIERS
+/* -------------------------------------------------- */
+
+// WIDTH
+.header-25 {
+    width: 25%;
+
+    @include respond-to($media: 'xs', $prefix: '-', $suffix: '::after') {
+        width: 25%;
+    };
+}
+
+.header-50 {
+    width: 50%;
+
+    @include respond-to($media: 'xs', $prefix: '-', $suffix: '::after') {
+        width: 55%;
+    };
+}
+
+.header-75 {
+    width: 75%;
+
+    @include respond-to($media: 'xs', $prefix: '-', $suffix: '::after') {
+        width: 75%;
+    };
+}
+
+.header-full {
+    width: 100%;
+
+    @include respond-to($media: 'xs', $prefix: '-', $suffix: '::after') {
+        width: 100%;
+    };
+}
+
+
+// COLORS
+.header {
+    @include color($type: 'hex', $property: 'background-color', $prefix: '-', $suffix: '::after', $alpha: 1);
+}
+
+
+/* -------------------------------------------------- */
+/* RESPONSIVE
+/* -------------------------------------------------- */
+
+/*
+@media only screen and (min-width: 0) and (max-width: map-get($breakpoints, sm) - 1 ) {
+
+    .header-left-mobile::after {
+        @include align('block', 'left');
+    }
+
+    .header-right-mobile::after {
+        @include align('block', 'right');
+    }
+
+    .header-center-mobile::after {
+        @include align('block', 'center');
+    }
+
+}
+
+@media only screen and (min-width: 0) and (max-width: map-get($breakpoints, lg) - 1 ) {
+
+    .header-left-tablet::after {
+        @include align('block', 'left');
+    }
+
+    .header-right-tablet::after {
+        @include align('block', 'right');
+    }
+
+    .header-center-tablet::after {
+        @include align('block', 'center');
+    }
+
+}
+*/

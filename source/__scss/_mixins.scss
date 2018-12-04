@@ -1,0 +1,343 @@
+/* -------------------------------------------------- */
+/* GUTTER (MARGINS / PADDING)
+/* -------------------------------------------------- */
+
+@mixin gutter($type: 'padding', $property: 'color', $prefix: '-', $suffix: '') {
+
+	@each $name, $color in $colors {
+
+		@if $type == 'hex' {
+
+			&#{$prefix}#{$name}#{$suffix} {
+				#{$property}: map-get($color, base);
+			}
+
+		} @else if $type == 'rgba' {
+
+			&#{$prefix}#{$name}#{$suffix} {
+				#{$property}: rgba( map-get($color, base), $alpha );
+			}
+
+			@if $alpha == 1 {
+				@debug '"1" is defined for "$alpha" value. Framework will default to hex value instead.';
+			}
+
+		} @else if $type == '' {
+
+			&#{$prefix}#{$name}#{$suffix} {
+				#{$property}: map-get($color, base);
+			}
+			&#{$prefix}#{$name}#{$suffix} {
+				#{$property}: map-get($color, base);
+			}
+
+			@debug 'No "$type" value defined. Framework will default to hex value instead.';
+
+		}
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* TYPOGRAPHY
+/* -------------------------------------------------- */
+
+// HEADER
+@mixin font-size-h {
+
+	@each $name, $font-size in $font-sizes {
+
+		&#{$name} {
+			font-size: pxtoem($font-size * 1.25, $basepx);
+		}
+
+	}
+
+}
+
+
+// PARAGRAPH
+@mixin font-size-p {
+
+	@each $name, $font-size in $font-sizes {
+
+		&#{$name} {
+			font-size: pxtoem($font-size, $basepx);
+		}
+
+	}
+
+}
+
+
+// FLUID TYPE : USAGE: pxtoem($base, $basepx);
+@mixin fluid-type($min-font-size: map-get($font-sizes, 6), $max-font-size: map-get($font-size, 1), $min-range: map-get($breakpoints, xs), $max-range: map-get($breakpoints, lg)) {
+
+	font-size: calc(#{$min-font-size} + #{(($max-font-size / ($max-font-size * 0 + 1)) - ($min-font-size / ($min-font-size * 0 + 1)))} * ( (100vw - #{$min-range}) / #{(($max-range / ($max-range * 0 + 1)) - ($min-range / ($min-range * 0 + 1)))}));
+
+	@media screen and (max-width: $min-range) {
+		font-size: $min-font-size;
+	}
+
+	@media screen and (min-width: $max-range) {
+		font-size: $max-font-size;
+	}
+  
+}
+
+
+/* -------------------------------------------------- */
+/* COLORS
+/* -------------------------------------------------- */
+
+@mixin color($type: 'hex', $property: 'color', $prefix: '-', $suffix: '', $alpha: 1) {
+
+	@each $name, $color in $colors {
+
+		@if $type == 'hex' {
+
+			&#{$prefix}#{$name}#{$suffix} {
+				#{$property}: map-get($color, base);
+			}
+
+		} @else if $type == 'rgba' {
+
+			&#{$prefix}#{$name}#{$suffix} {
+				#{$property}: rgba( map-get($color, base), $alpha );
+			}
+
+			@if $alpha == 1 {
+				@debug '"1" is defined for "$alpha" value. Framework will default to hex value instead.';
+			}
+
+		} @else if $type == '' {
+
+			&#{$prefix}#{$name}#{$suffix} {
+				#{$property}: map-get($color, base);
+			}
+			&#{$prefix}#{$name}#{$suffix} {
+				#{$property}: map-get($color, base);
+			}
+
+			@debug 'No "$type" value defined. Framework will default to hex value instead.';
+
+		}
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* ALIGNMENT: BLOCK
+/* -------------------------------------------------- */
+
+@mixin align($type: 'block', $alignment: 'left') {
+
+	// DISPLAY: BLOCK
+	@if $type == 'block' {
+
+		@if $alignment == 'left' or '' {
+
+			margin: { 
+				left: 0;
+				right: auto;
+			}
+
+		} @else if $alignment == 'right' {
+
+			margin: { 
+				left: auto;
+				right: 0;
+			}
+
+		} @else if $alignment == 'center' {
+
+			margin: { 
+				left: auto;
+				right: auto;
+			}
+		}
+
+	}
+
+
+	// POSITION: ABSOLUTE
+	@if $type == 'absolute' {
+
+		position: absolute;
+
+		@if $alignment == 'left' or '' {
+
+			left: 0;
+
+		} @else if $alignment == 'right' {
+
+			right: 0;
+
+		} @else if $alignment == 'center' {
+
+			left: 50%;
+			transform: translate(-50%, 0);
+
+		} @else if $alignment == 'middle' {
+
+			top: 50%;
+    		left: 50%;
+    		transform: translate(-50%, -50%);
+
+		}
+
+	} @else if $type == 'block' and $alignment == 'middle'  {
+
+		@warn 'VALUE MISMATCH: "$type" must be set to "absolute" in order to set "$alignment" to "middle".';
+
+	}
+
+}
+
+
+/* -------------------------------------------------- */
+/* BREAKPOINTS
+/* -------------------------------------------------- */
+
+//@at-root #{'.' + $mobile + '-'}#{&} {
+	//@content;
+//}
+
+
+$xs: 'xs';
+$sm: 'sm';
+$md: 'md';
+$lg: 'lg';
+$xl: 'xl';
+
+@mixin respond-to($media, $prefix: '-', $suffix: '') {
+
+	// Ex: iPhone 5
+	@if $media == 'xs' {
+
+		@media only screen and (min-width: 0) and (max-width: map-get($breakpoints, xs) ) {
+
+			&#{$prefix}#{$xs}#{$suffix} {
+				@content;
+			}
+
+		}
+
+	}
+
+
+	// Ex: iPhone 6
+	@if $media == 'sm' {
+
+		@media only screen and (min-width: map-get($breakpoints, xs) + 1 ) and (max-width: map-get($breakpoints, sm) - 1 ) {
+
+			&#{$prefix}#{$sm}#{$suffix} {
+				@content;
+			}
+
+		}
+
+	}
+
+
+	// Ex: General
+	@if $media == 'md' {
+
+		@media only screen and (min-width: map-get($breakpoints, sm) + 1 ) and (max-width: map-get($breakpoints, md) - 1 ) {
+
+			&#{$prefix}#{$md}#{$suffix} {
+				@content;
+			}
+
+		}
+
+	}
+
+
+	// Ex: iPad
+	@if $media == 'lg' {
+
+		@media only screen and (min-width: map-get($breakpoints, md) + 1 ) and (max-width: map-get($breakpoints, lg) - 1 ) {
+
+			&#{$prefix}#{$lg}#{$suffix} {
+				@content;
+			}
+
+		}
+
+	}
+
+
+	// Ex: Desktop, Laptop, iPadPro
+	@if $media == 'xl' {
+
+		@media only screen and (min-width: map-get($breakpoints, xl) - 1 ) {
+
+			&#{$prefix}#{$xl}#{$suffix} {
+				@content;
+			}
+
+		}
+
+	}
+
+
+	// ALL
+	@if $media == 'all' {
+
+		// Ex: iPhone 5
+		@media only screen and (min-width: 0) and (max-width: map-get($breakpoints, xs) ) {
+
+			&#{$prefix}#{$xs}#{$suffix} {
+				@content;
+			}
+
+		}
+
+
+		// Ex: iPhone 6
+		@media only screen and (min-width: map-get($breakpoints, xs) + 1 ) and (max-width: map-get($breakpoints, sm) - 1 ) {
+
+			&#{$prefix}#{$sm}#{$suffix} {
+				@content;
+			}
+
+		}
+
+
+		// Ex: General
+		@media only screen and (min-width: map-get($breakpoints, sm) + 1 ) and (max-width: map-get($breakpoints, md) - 1 ) {
+
+			&#{$prefix}#{$md}#{$suffix} {
+				@content;
+			}
+
+		}
+
+
+		// Ex: iPad
+		@media only screen and (min-width: map-get($breakpoints, md) + 1 ) and (max-width: map-get($breakpoints, lg) - 1 ) {
+
+			&#{$prefix}#{$md}#{$suffix} {
+				@content;
+			}
+
+		}
+
+
+		// Ex: Desktop, Laptop, iPadPro
+		@media only screen and (max-width: map-get($breakpoints, xl) - 1 ) {
+
+			&#{$prefix}#{$xl}#{$suffix} {
+				@content;
+			}
+
+		}
+
+	}
+
+}

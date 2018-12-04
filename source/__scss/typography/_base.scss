@@ -1,0 +1,40 @@
+/* -------------------------------------------------- */
+/* FONT FAMILIES
+/* -------------------------------------------------- */
+
+h1, .font-header {
+	font-family: $font-header;
+}
+
+h2, h3, h4, h5, h6, .font-subheader {
+	font-family: $font-copy;
+}
+
+.font-copy {
+	font-family: $font-copy;
+}
+
+.font-stack {
+	font-family: $font-stack;
+}
+
+
+/* -------------------------------------------------- */
+/* TYPE
+/* -------------------------------------------------- */	
+
+h, .h {
+	@include font-size-h;
+}
+
+p {
+	font-size: $base;
+}
+
+.p {
+	@include font-size-p;
+}
+
+.fluid-type {
+	@include fluid-type( map-get($font-sizes, 6), $base );
+}
