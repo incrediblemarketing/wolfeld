@@ -1,3 +1,4 @@
+
 /* -------------------------------------------------- */
 /* GUTTER (MARGINS / PADDING)
 /* -------------------------------------------------- */
@@ -112,11 +113,44 @@
 				@debug '"1" is defined for "$alpha" value. Framework will default to hex value instead.';
 			}
 
-		} @else if $type == '' {
+		} @else if $type == 'svg-gradient' {
 
 			&#{$prefix}#{$name}#{$suffix} {
-				#{$property}: map-get($color, base);
+				fill: url( .svg-#{$name}-stop-color );
 			}
+			&#{$prefix}#{$name}-stop-color stop.start-color {
+				stop-color: map-get($color, base);
+			}
+			&#{$prefix}#{$name}-stop-color stop.end-color {
+				stop-color: map-get($color, dark);
+			}
+
+		} @else if $type == 'gradient' {
+
+			&#{$prefix}#{$name}-linear-gradient#{$suffix} {
+				background: linear-gradient(to top, map-get($color, base) 0%, map-get($color, dark) 100%);
+			}
+			&#{$prefix}#{$name}-linear-gradient-left#{$suffix} {
+				background: linear-gradient(to left, map-get($color, base) 0%, map-get($color, dark) 100%);
+			}
+			&#{$prefix}#{$name}-linear-gradient-right#{$suffix} {
+				background: linear-gradient(to right, map-get($color, base) 0%, map-get($color, dark) 100%);
+			}
+			&#{$prefix}#{$name}-linear-gradient-reverse#{$suffix} {
+				background: linear-gradient(to bottom, map-get($color, base) 0%, map-get($color, dark) 100%);
+			}
+			&#{$prefix}#{$name}-radial-gradient#{$suffix} {
+				background: radial-gradient(ellipse at center, map-get($color, base) 0%, map-get($color, dark) 100%);
+			}
+			&#{$prefix}#{$name}-diagonal-gradient#{$suffix} {
+				background: linear-gradient(45deg, map-get($color, base) 0%, map-get($color, dark) 100%);
+			}
+			&#{$prefix}#{$name}-diagonal-gradient-reverse#{$suffix} {
+				background: linear-gradient(-45deg, map-get($color, base) 0%, map-get($color, dark) 100%);
+			}
+
+		} @else if $type == '' {
+
 			&#{$prefix}#{$name}#{$suffix} {
 				#{$property}: map-get($color, base);
 			}

@@ -57,19 +57,7 @@ h1 {
 
 
 
-.text {
-	@include color($type: 'hex', $property: 'color', $prefix: '-');
-}
 
-
-.background {
-	@include color($type: 'rgba', $property: 'background-color', $prefix: '-', $alpha: 1);
-}
-
-
-.test {
-	color: map-get( map-get($colors, primary), light);
-}
 
 /*
 

@@ -105,7 +105,7 @@ $navbarShrinkEase = Power4.easeOut,
 $navbarHideOnScrollUp = false,
 $navbarHideOnScrollDown = true,
 $navbarShowOnPageEnd = true,
-$navbarHideSpeed = 1,
+$navbarHideSpeed = 2,
 $navbarHideEase = Power4.easeOut,
 
 

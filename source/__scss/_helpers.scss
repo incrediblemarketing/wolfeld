@@ -2,7 +2,7 @@
 /* DISABLED / INACTIVE
 /* -------------------------------------------------- */
 
-@mixin disabled {
+%disabled {
 	cursor: pointer;
 	pointer-events: none;
 }
@@ -12,7 +12,7 @@
 /* PSEUDO
 /* -------------------------------------------------- */
 
-@mixin pseudo {
+@mixin psuedo {
 	content: '';
 	display: block;
 	position: absolute;
@@ -24,7 +24,8 @@
 /* -------------------------------------------------- */
 
 @mixin icon($property) {
-	content: '';
-	position: absolute;
+
+	@include psuedo;
+
 	font-family: $property;
 }

@@ -2,30 +2,7 @@
 /* LINKS
 /* -------------------------------------------------- */
 
-a:not(.button):not([class^='social-icon-']):not([class='card']) {
-
-	text-transform: $transition;
-
-	&:hover, &:focus {
-		text-decoration: none;
-    }
-	&:active {
-		color: map-get(map-get($colors, primary), base);
-		text-decoration: none;
-		background-color: transparent;
-	}
-
-}
-
-/* HELPERS */
-a.inactive,
-a.disabled {
-	@include disabled;
-
-	color: map-get(map-get($colors, primary), base);
-}
-
-/*
+/* COMMON */
 a, blockquote, button, div, figcaption, h1, h2, h3, h4, h5, h6, input, label, dl, li, ol, p, select, span, table, textarea {
 	color: inherit;
 	font-family: inherit;
@@ -34,4 +11,45 @@ a, blockquote, button, div, figcaption, h1, h2, h3, h4, h5, h6, input, label, dl
 	text-align: inherit;
 	border: 0;
 }
-*/
+
+
+/* DEFAULT */
+a {
+
+	color: map-get(map-get($colors, primary), base);
+	text-transform: $transition;
+
+	&:hover, &:focus {
+		color: map-get(map-get($colors, primary), light);
+		text-decoration: none;
+    }
+	&:active {
+		color: map-get(map-get($colors, primary), base);
+		text-decoration: none;
+		background-color: transparent;
+	}
+	&:visited {
+		color: map-get(map-get($colors, primary), dark);
+		text-decoration: none;
+		background-color: transparent;
+	}
+
+}
+
+
+/* HELPERS */
+a.#{$modifier}disabled {
+	@extend %disabled;
+
+	color: map-get(map-get($colors, gray), base);
+}
+
+button.#{$modifier}disabled,
+.button.#{$modifier}disabled {
+	@extend %disabled;
+
+	color: map-get(map-get($colors, gray), base);
+	background-color: map-get(map-get($colors, light-gray), base);
+}
+
+

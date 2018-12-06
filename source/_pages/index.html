@@ -10,7 +10,7 @@ dialog: dialog/
 
 
 <!-- SECTION: HERO -->
-<section id="hero" class="grid-x grid-padding-x align-center align-middle position-relative margin-tb-xl-mobile padding-none width-lg height-100 background-secondary background-grid-pattern overflow-hidden no-selection emergence-ignore" data-emergence="hidden" role="banner">
+<section id="hero" class="grid-x grid-padding-x align-center align-middle position-relative margin-tb-md padding-none width-lg height-100 background-secondary background-grid-pattern overflow-hidden no-selection emergence-ignore" data-emergence="hidden" role="banner">
 
 
 	<!-- BACKGROUND: IMAGE -->
@@ -451,7 +451,7 @@ dialog: dialog/
 	<!-- VIDEO -->
 	<div class="cell position-relative fade-full fade-full-white opacity-05 z-00">
 
-		<video class="width-full anim lazy" preload="auto" playsinline muted loop>
+		<video data-src="{{ root }}{{ assets }}index/media-01.mp4" class="width-full anim lazy" playsinline muted loop>
 			<source src="{{ root }}{{ assets }}index/media-01.mp4" poster="{{ root }}{{ assets }}index/media-01.jpg" type="video/mp4">
 			<!--<source src="{{ root }}{{ assets }}index/media-01.webm" type="video/webm">-->
 		</video>
@@ -550,7 +550,7 @@ dialog: dialog/
 	<!-- VIDEO -->
 	<div class="cell position-relative fade-full fade-full-white z-00">
 
-		<video class="width-full lazy anim" preload="auto" playsinline muted loop>
+		<video data-src="{{ root }}{{ assets }}index/media-02.mp4" class="width-full lazy anim" playsinline muted loop>
 			<source src="{{ root }}{{ assets }}index/media-02.mp4" poster="{{ root }}{{ assets }}index/media-02.jpg" type="video/mp4">
 			<!--<source src="{{ root }}{{ assets }}index/media-02.webm" type="video/webm">-->
 		</video>

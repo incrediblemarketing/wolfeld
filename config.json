@@ -3,8 +3,8 @@
 	"options": {
 		"name": "Wolfeld",
 		"site": "https://domain.com",
-		"siteVersion": "0.0.1",
-		"styleguideVersion": "0.0.1",
+		"siteVersion": "0.0.2",
+		"styleguideVersion": "0.0.2",
 		"production": true,
 		"serviceworker": true,
 		"appBanner": false,

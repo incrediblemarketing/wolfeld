@@ -130,7 +130,8 @@ h6, .h6 {
 @media only screen and (min-width: 0) and (max-width: 375px) {
 
 	h1, .h1 {
-		font-size: 3rem;
+		font-size: 2rem;
+        line-height: 1em;
 	}
 
 	h2, .h2 {

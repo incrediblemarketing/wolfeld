@@ -19,22 +19,20 @@ import hubRegistry from "gulp-hub"; // Register tasks.
 
 
 // MODULES
-import a11y from "gulp-a11y"; // Performs and accessibility audit.
-import accessibility from "gulp-accessibility"; // Audit app's accessibility.
+import a11y from "gulp-a11y"; // Performs an accessibility audit.
+import accessibility from "gulp-accessibility"; // Performs an accessibility audit.
 import awsPublish from "gulp-awspublish"; // Push files to AWS S3 Bucket.
 import awsSDK from "aws-sdk"; // Official AWS SDK for JavaScript, available for browsers and mobile devices, or Node.js backends.
 import browserSync from "browser-sync"; browserSync.create(); // Sync and update changes for local development.
 import browserSyncHTMLInjector from "bs-html-injector"; // Plugin to update (inject) HTML changes similar to CSS injection.
 import cache from "gulp-cached"; // Keep track and cache files in memory that run through the stream.
-import concat from "gulp-concat"; // Bundle JS or CSS files.
 import del from "del"; // Delete files and directories.
 import deleteEmpty from "delete-empty"; // Delete empty directories.
 import ftp from "vinyl-ftp"; // Deploy to server.
-import fs from "fs"; // Read, sync and parse.
+import fs from "fs"; // Read, sync and parse JSON files.
 import git from "gulp-git"; // Push files to Github.
 import gulpif from "gulp-if"; // Allows for conditional operators (if, &&, ||, ==, ===, <, >) in pipe streams.
 import gutil from "gulp-util"; // For logging tasks and process streams.
-import inject from "gulp-inject"; // Inject JS and CSS files.
 import jsonReplace from "gulp-json-replace"; // Replaces strings from JSON data.
 import open from "gulp-open"; // Access and open files in a browser.
 import path from "path"; // Resolves pathing issues.
@@ -47,22 +45,24 @@ import revRewrite from "gulp-rev-rewrite"; // Rewrite occurrences of file names 
 import revDelete from "gulp-rev-delete-original"; // Delete the original file rewritten by gulp-rev or gulp-rev-all.
 import revFormat from "gulp-rev-format"; // Formatting options for revisioned files.
 import sourcemaps from "gulp-sourcemaps"; // Generate JS or CSS sourcemaps.
-import webfontloader from "inject-webfontloader"; // Injects WebFontLoader.
 import zip from "gulp-zip"; // ZIP compress files.
 
 
 // HTML MODULES
+import concat from "gulp-concat"; // Bundle JS and CSS files.
 import htmlmin from "gulp-htmlmin"; // Minify HTML files.
 import htmlreplace from "gulp-html-replace"; // Replace build blocks in HTML files.
+import inject from "gulp-inject"; // Inject JS and CSS files.
 import noopener from "gulp-noopener"; // Inserts 'rel=noopener' to links that open in a new window.
 import panini from "panini"; // Foundation Handlebars templating engine.
 import purgeHtml from "purgecss-from-html" // Removes unused CSS in production files. *Note: This will enable ':hover' states on touch devices.
+import webfontloader from "inject-webfontloader"; // Inject WebFontLoader.
 
 
 // JS MODULES
 import babel from "gulp-babel"; // JavaScript converter and compiler.
 import defer from "gulp-defer"; // Moves render blocking JavaScript and CSS files into a deferred loading section.
-import jshint from "gulp-jshint"; // Detect errors and potential problems in JavaScript code.
+import jshint from "gulp-jshint"; // Detect errors and potential problems in JavaScript syntax.
 import modernizr from "gulp-modernizr"; // Detect browser and device specific features.
 import uglify from "gulp-uglify"; // Minify JS files.
 
@@ -72,7 +72,7 @@ import csscomb from "gulp-csscomb"; // Sort CSS Properties.
 import csslint from "gulp-csslint"; // Detect errors and potential problems in CSS syntax.
 import cleanCSS from "gulp-clean-css"; // Minify CSS files.
 import postcss from "gulp-postcss"; // CSS Pre and post processer.
-import postcssAutoprefixer from "autoprefixer"; // Adds vendor prefixes using data from Can I Use.
+import postcssAutoprefixer from "autoprefixer"; // Adds vendor prefixes using data from caniuse.com.
 import postcssCalc from "postcss-calc"; // Reduces calc() references whenever possible.
 import postcssCombineDuplicatedSelectors from "postcss-combine-duplicated-selectors"; // Combine similar CSS selectors.
 import postcssMQPacker from "css-mqpacker"; // Combine (pack) similar media query rules.
@@ -94,8 +94,8 @@ import webp from "gulp-webp"; // Convert image assets to WebP format.
 
 
 // CACHE / CRAWLING / TRACKING
-import fullstory from "inject-fullstory"; // Injects FullStory tracking.
-import serviceworker from "inject-serviceworker"; // Injects Service Worker.
+import fullstory from "inject-fullstory"; // Inject FullStory tracking.
+import serviceworker from "inject-serviceworker"; // Inject Service Worker.
 import ga from "gulp-ga"; // Inject Google Analytics.
 import generateSitemap from "gulp-sitemap"; // Generate a sitemap.
 import gtm from "gulp-gtm"; // Inject Google Tag Manager.
@@ -108,11 +108,10 @@ import workbox from "workbox-build"; // Integrate Service Worker to leverage pre
 /* -------------------------------------------------- */
 
 const config = JSON.parse(fs.readFileSync(configFile)),
-	  //server = JSON.parse(fs.readFileSync(serverFile)), // Defined in deploy task.
 
 	  dirJoin = path.join,
 	  dirResolve = path.resolve,
-	  //dirRelative = path.relative,
+	  dirRelative = path.relative,
 	  root = dirResolve(__dirname),
 
 	  pathSource = config.root.source,
@@ -153,11 +152,11 @@ const uglifyJSOptions = {
 const plugins = [postcssAutoprefixer({
 									  add: config.optimizations.css.autoprefix, // Controls use of Visual Cascade, if CSS is uncompressed (true).
 									  cascade: config.optimizations.css.cascade, // Controls adding prefixes (true).
-									  //supports: config.optimizations.css.supports,
-									  support: config.optimizations.css.support,
 									  flexbox: config.optimizations.css.flexbox, // Controls prefixes for flexbox properties. With 'no-2009' value Autoprefixer will add prefixes only for final and IE versions of specification (true).
 									  grid: config.optimizations.css.grid, // Controls IE prefixes for Grid Layout properties (true).
 									  remove: config.optimizations.css.removeOutdatedPrefixes, // Controls outdated prefixes (true).
+									  supports: config.optimizations.css.supports,
+									  support: config.optimizations.css.support,
 									  //stats: config.optimizations.css.log // Custom usage statistics for > 10% in my stats browsers query.
 									}),
 
@@ -169,7 +168,7 @@ const plugins = [postcssAutoprefixer({
 				 				   preserve: config.optimizations.css.preserveVariables, // Preserve variable properties (false).
 				 				   preserveInjectedVariables: config.optimizations.css.preserveVariables // Preserve injected variable properties (false).
 				 }),
-				 postcssZIndex(),
+				 postcssZIndex()
 				];
 
 const purgeCSSOptions = {
@@ -193,8 +192,8 @@ const cleanCSSOptions = {
 					specialComments: false
 				},
 				2: {
-					mergeAdjacentRules: false, // Controls mergeing adjacent rules (true). *Note: Might cause unusual results. 
-					mergeIntoShorthands: false, // Controls merging properties into shorthands (true). *Note: Might cause unusual results. 
+					mergeAdjacentRules: true, // Controls mergeing adjacent rules (true). *Note: Might cause unusual results. 
+					mergeIntoShorthands: true, // Controls merging properties into shorthands (true). *Note: Might cause unusual results. 
 					mergeMedia: true, // Controls merging @media rules (true). *Note: Might cause unusual results.
 					mergeNonAdjacentRules: true, // Controls merging non-adjacent rules (true).
 					mergeSemantically: false, // Controls semantic merging (false).
@@ -205,7 +204,7 @@ const cleanCSSOptions = {
 					removeDuplicateMediaBlocks: true, // Controls duplicate @media (true).
 					removeDuplicateRules: true, // Controls duplicate rules (true).
 					removeUnusedAtRules: false, // Controls unused at rule (false). *Note: Available since 4.1.0.
-					restructureRules: false, // Controls rule restructuring (false).
+					restructureRules: true, // Controls rule restructuring (false).
 					skipProperties: [] // Controls which properties won't be optimized, defaults to '[]' which means all will be optimized (since 4.1.0).
 				}
 		}
@@ -641,7 +640,7 @@ export function vendors() {
 /* CSS
 /* -------------------------------------------------- */
 
-// TEST
+// SCSS (CURRENTLY IN TESTING)
 export function scss() {
 
 	console.log("Compiling SCSS...");
@@ -653,7 +652,11 @@ export function scss() {
 			   .pipe(sassGlob( { ignorePaths: [] } ))
 			   .pipe( sass({ outputStyle: null, trace: true, verbose: true }).on("error", sass.logError) )
 			   //.pipe(sourcemaps.write())
-			   .pipe( gulp.dest( pathSource + "__scss/" ) );
+			   pipe(postcss(plugins))
+			   //.pipe(gulpif( production, purgecss(purgeCSSOptions) ))
+			   //.pipe(gulpif( production, cleanCSS(cleanCSSOptions) ))
+			   .pipe( gulp.dest( pathSource + "__scss/" ) )
+			   .pipe(browserSync.stream());
 
 }
 
@@ -1241,8 +1244,6 @@ if ( fs.existsSync(serverFile) ) {
 
 	serverStatus = true;
 	//console.log( serverFile + " exists. Server status: " + serverStatus );
-
-	//const server = JSON.parse(fs.readFileSync(serverFile));
 
 } else {
 

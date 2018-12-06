@@ -1,10 +1,40 @@
 /* -------------------------------------------------- */
+/* BEM NAMING CONVENTION (OPTIONAL)
+/* -------------------------------------------------- */
+
+$element: '';
+$modifier: '';
+
+
+/* -------------------------------------------------- */
+/* BROWSER UI THEME
+/* -------------------------------------------------- */
+
+$scroll-width: 10px;
+
+$scroll-button-color: #333;
+$scroll-button-hover-color: dark-gray;
+$scroll-button-height: 0;
+$scroll-button-radius: 0;
+
+$scroll-bar-color: #333;
+$scroll-bar-hover-color: dark-gray;
+$scroll-bar-radius: 0;
+
+$scroll-track-color: gray;
+$scroll-track-hover-color: light-gray;
+
+$selection-text-color: #fff;
+$selection-background-color: #333;
+
+
+/* -------------------------------------------------- */
 /* COPY
 /* -------------------------------------------------- */
 
 $font-header: 'Comfortaa', cursive !default;
 $font-subheader: 'Comfortaa', cursive !default;
-$font-copy: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, Ubuntu, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
+$font-copy: 'Open Sans', sans-serif !default;
 $font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, Ubuntu, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
 
 
@@ -58,62 +88,86 @@ $colors: (
 
     primary: (
         base: #fa0096,
-        light: lighten(#fa0096, 15%),
-        dark: darken(#fa0096, 15%)
+        light: lighten(#fa0096, 25%),
+        dark: darken(#fa0096, 25%)
     ),
 
     secondary: (
         base: #6400fa,
-        light: lighten(#6400fa, 15%),
-        dark: darken(#6400fa, 15%)
+        light: lighten(#6400fa, 25%),
+        dark: darken(#6400fa, 25%)
     ),
 
     accent: (
         base: #00fac8,
-        light: lighten(#00fac8, 15%),
-        dark: darken(#00fac8, 15%)
+        light: lighten(#00fac8, 25%),
+        dark: darken(#00fac8, 25%)
     ),
 
     wild: (
         base: #afe1fa,
-        light: lighten(#afe1fa, 15%),
-        dark: darken(#afe1fa, 15%)
+        light: lighten(#afe1fa, 25%),
+        dark: darken(#afe1fa, 25%)
     ),
 
-    light: (
+    white: (
         base: #fff,
-        light: lighten(#fff, 15%),
-        dark: darken(#fff, 15%)
+        light: lighten(#fff, 25%),
+        dark: darken(#fff, 25%)
+    ),
+
+    light-gray: (
+        base: #f8f8f8,
+        light: lighten(#f8f8f8, 25%),
+        dark: darken(#f8f8f8, 25%)
     ),
 
     gray: (
-        base: #f2f2f2,
-        light: lighten(#f2f2f2, 15%),
-        dark: darken(#f2f2f2, 15%)
+        base: silver,
+        light: lighten(silver, 25%),
+        dark: darken(silver, 25%)
     ),
 
-    dark: (
+    dark-gray: (
+        base: #808080,
+        light: lighten(#808080, 25%),
+        dark: darken(#808080, 25%)
+    ),
+
+    charcoal: (
         base: #333,
-        light: lighten(#333, 15%),
-        dark: darken(#333, 15%)
+        light: lighten(#333, 25%),
+        dark: darken(#333, 25%)
+    ),
+
+    black: (
+        base: #000,
+        light: lighten(#000, 25%),
+        dark: darken(#000, 25%)
     ),
 
     ok: (
         base: #0f0,
-        light: lighten(#0f0, 15%),
-        dark: darken(#0f0, 15%)
+        light: lighten(#0f0, 25%),
+        dark: darken(#0f0, 25%)
     ),
 
     warning: (
         base: #fc0,
-        light: lighten(#fc0, 15%),
-        dark: darken(#fc0, 15%)
+        light: lighten(#fc0, 25%),
+        dark: darken(#fc0, 25%)
     ),
 
     error: (
         base: #f00,
-        light: lighten(#f00, 15%),
-        dark: darken(#f00, 15%)
+        light: lighten(#f00, 25%),
+        dark: darken(#f00, 25%)
+    ),
+
+    transparent: (
+        base: transparent,
+        light: transparent,
+        dark: transparent
     )
 
 ) !default;
