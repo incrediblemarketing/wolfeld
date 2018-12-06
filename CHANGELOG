@@ -4,7 +4,7 @@ Version 0.0.2
 	Website / App
 		- Adjusted $updateInterval value to check for, fire and update functions more frequently. This is balanced between performance and responsiveness of animations.
 		- Fixed 'scroll-to[href="#top"]' not being responsive on mobile touch devices.
-		- IntersectionObserver now watches for video elements and will load() and play() accordingly when scrolled into the viewport. Observer will fallback to LazyLoad for browsers that do not suport the IO API.
+		- IntersectionObserver now watches for video elements and will load() and play() accordingly when scrolled into the viewport. Observer will fallback to LazyLoad for browsers that do not support the IO API.
 		- Optimized and reduced size of video content.
 		- Icon animation adjustments.
 
