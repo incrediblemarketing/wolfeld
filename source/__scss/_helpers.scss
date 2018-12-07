@@ -12,7 +12,7 @@
 /* PSEUDO
 /* -------------------------------------------------- */
 
-@mixin psuedo {
+%psuedo {
 	content: '';
 	display: block;
 	position: absolute;
@@ -20,12 +20,12 @@
 
 
 /* -------------------------------------------------- */
-/* FONT AWESOME
+/* ICON
 /* -------------------------------------------------- */
 
-@mixin icon($property) {
-
-	@include psuedo;
-
-	font-family: $property;
+@mixin icon($icon) {
+	content: $icon;
+	display: block;
+	position: absolute;
+	font-family: $font-icons;
 }

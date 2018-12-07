@@ -69,23 +69,7 @@
 /* SVG
 /* -------------------------------------------------- */
 
-.#{$modifier}svg {
-    @include icon('font-awesome');
-    
-    @include color($type: 'hex', $property: 'color', $prefix: '-', $suffix: ' *', $alpha: 1);
-    @include color($type: 'svg-gradient', $property: 'color', $prefix: '-', $suffix: '-gradient path', $alpha: 1);
-
-    & {
-        @include color($type: 'hex', $property: 'color', $prefix: '-', $suffix: '-hover:hover *', $alpha: 1);
-    }
-    & {
-        @include color($type: 'hex', $property: 'color', $prefix: '-', $suffix: ':active *', $alpha: 1);
-    }
-
-}
-
-
-/* HELPERS */
+/* MODIFIERS */
 .#{$modifier}svg-stroke-none,
 .#{$modifier}svg-stroke-none *,
 .#{$modifier}svg-stroke-none g,
@@ -100,11 +84,40 @@
     fill: none !important;
 }
 
-.#{$modifier}svg-global {
+
+/* COLORS */
+.#{$modifier}svg {
+
+    @include color($type: 'hex', $property: 'color', $prefix: '-', $suffix: ' *', $alpha: 1);
+
+    & {
+        @include color($type: 'hex', $property: 'color', $prefix: '-', $suffix: '-hover:hover *', $alpha: 1);
+    }
+    & {
+        @include color($type: 'hex', $property: 'color', $prefix: '-', $suffix: ':active *', $alpha: 1);
+    }
+
+}
+
+
+/* -------------------------------------------------- */
+/* SVG GRADIENTS
+/* -------------------------------------------------- */
+
+/* ELEMENT */
+.#{$element}svg-global {
     position: absolute;
     z-index: -1;
     pointer-events: none;
     opacity: 0;
+}
+
+
+/* COLORS */
+.#{$modifier}svg {
+
+    @include color($type: 'svg-gradient', $property: 'color', $prefix: '-', $suffix: '-gradient path', $alpha: 1);
+
 }
 
 
@@ -158,14 +171,29 @@
 .#{$modifier}background {
 
     @include color($type: 'hex', $property: 'background-color', $prefix: '-', $suffix: '', $alpha: 1);
-    @include color($type: 'gradient', $property: 'color', $prefix: '-', $suffix: '', $alpha: 1);
 
     & {
         @include color($type: 'hex', $property: 'background-color', $prefix: '-', $suffix: '-hover:hover', $alpha: 1);
-         @include color($type: 'gradient', $property: 'background-color', $prefix: '-', $suffix: '-hover:hover', $alpha: 1);
     }
     & {
         @include color($type: 'hex', $property: 'background-color', $prefix: '-', $suffix: ':active', $alpha: 1);
+    }
+
+}
+
+
+/* -------------------------------------------------- */
+/* BACKGROUND GRADIENTS
+/* -------------------------------------------------- */
+
+.#{$modifier}background {
+
+    @include color($type: 'gradient', $property: 'color', $prefix: '-', $suffix: '', $alpha: 1);
+
+    & {
+         @include color($type: 'gradient', $property: 'background-color', $prefix: '-', $suffix: '-hover:hover', $alpha: 1);
+    }
+    & {
         @include color($type: 'gradient', $property: 'background-color', $prefix: '-', $suffix: ':active', $alpha: 1);
     }
 

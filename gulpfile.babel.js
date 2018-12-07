@@ -192,8 +192,8 @@ const cleanCSSOptions = {
 					specialComments: false
 				},
 				2: {
-					mergeAdjacentRules: true, // Controls mergeing adjacent rules (true). *Note: Might cause unusual results. 
-					mergeIntoShorthands: true, // Controls merging properties into shorthands (true). *Note: Might cause unusual results. 
+					mergeAdjacentRules: false, // Controls mergeing adjacent rules (false). *Note: Might cause unusual results. 
+					mergeIntoShorthands: false, // Controls merging properties into shorthands (false). *Note: Might cause unusual results. 
 					mergeMedia: true, // Controls merging @media rules (true). *Note: Might cause unusual results.
 					mergeNonAdjacentRules: true, // Controls merging non-adjacent rules (true).
 					mergeSemantically: false, // Controls semantic merging (false).
@@ -204,7 +204,7 @@ const cleanCSSOptions = {
 					removeDuplicateMediaBlocks: true, // Controls duplicate @media (true).
 					removeDuplicateRules: true, // Controls duplicate rules (true).
 					removeUnusedAtRules: false, // Controls unused at rule (false). *Note: Available since 4.1.0.
-					restructureRules: true, // Controls rule restructuring (false).
+					restructureRules: false, // Controls rule restructuring (false).
 					skipProperties: [] // Controls which properties won't be optimized, defaults to '[]' which means all will be optimized (since 4.1.0).
 				}
 		}

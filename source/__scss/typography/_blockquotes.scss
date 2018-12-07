@@ -9,14 +9,15 @@ blockquote {
 }
 
 blockquote::after {
-    @include icon('FontAwesome');
 
-    content: '\f10d';
+    @include icon(\f013);
+
     top: -0.25em;
     left: 0.12em;
     font-size: pxtoem($base, $basepx);
     opacity: 0.15;
     z-index: auto;
+
 }
 
 blockquote p, cite {

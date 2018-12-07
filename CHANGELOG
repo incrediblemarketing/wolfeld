@@ -1,4 +1,17 @@
 
+December 7, 2018
+Version 0.0.2 (Quick Fix)
+	Website / App
+		- Fixed layout displaying incorrectly on mobile devices.
+
+
+	Framework
+		- 'mergeAdjacentRules' and 'restructureRules' were outputting mangled CSS and are disabled in css() task compiler.
+
+
+
+
+
 December 6, 2018
 Version 0.0.2
 	Website / App

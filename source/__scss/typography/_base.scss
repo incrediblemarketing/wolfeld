@@ -2,19 +2,19 @@
 /* FONT FAMILIES
 /* -------------------------------------------------- */
 
-h1, .font-header {
+h1, .#{$modifier}font-header {
 	font-family: $font-header;
 }
 
-h2, h3, h4, h5, h6, .font-subheader {
+h2, h3, h4, h5, h6, .#{$modifier}font-subheader {
 	font-family: $font-copy;
 }
 
-.font-copy {
+.#{$modifier}font-copy {
 	font-family: $font-copy;
 }
 
-.font-stack {
+.#{$modifier}font-stack {
 	font-family: $font-stack;
 }
 
@@ -23,7 +23,7 @@ h2, h3, h4, h5, h6, .font-subheader {
 /* TYPE
 /* -------------------------------------------------- */	
 
-h, .h {
+h, .#{$modifier}h {
 	@include font-size-h;
 }
 
@@ -31,10 +31,10 @@ p {
 	font-size: $base;
 }
 
-.p {
+.#{$modifier}p {
 	@include font-size-p;
 }
 
-.fluid-type {
+.#{$modifier}fluid-type {
 	@include fluid-type( map-get($font-sizes, 6), $base );
 }
