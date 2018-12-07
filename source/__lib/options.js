@@ -78,8 +78,8 @@ $scrollToEase = Power4.easeInOut,
 
 // THROTTLE / DEBOUNCE INTERVAL
 $delayInterval = 1, // Set delay interval before function fires.
-$updateInterval = 100, // Set debounce / throttling interval. Increasing this value will limit events being fired every so often.
-$throttleTrail = true,
+$updateInterval = 200, // Set debounce / throttling interval. Increasing this value will limit events being fired every so often.
+$throttleTrailing = true,
 $throttleLeading = true,
 
 

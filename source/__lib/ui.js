@@ -722,10 +722,11 @@ var uiScrollTo = function() {
 	
 	scrollToTop.click(function(e) {
 		e.preventDefault();
-			
+		
+		console.log();
 		$(html, body).animate({ scrollTop: 0 }, 800, "easeInOutExpo");
 
-		return false;
+		//return false;
 
 	});
 
@@ -866,7 +867,7 @@ var uiScrollTrack = function() {
 }; // END uiScrollTrack
 
 
-$$(window).on("scrollstop", { latency: 500 }, uiScrollTrack);
+$$(window).on("scrollstop", { latency: $updateInterval }, uiScrollTrack);
 
 
 /* -------------------------------------------------- */

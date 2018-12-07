@@ -312,11 +312,16 @@ var utilEmergence = function() {
 		handheld: true,
 		throttle: $updateInterval,
 		elemCushion: 0,
-		offsetTop: 100,
+		offsetTop: 0,
 		offsetRight: 0,
 		offsetBottom: 0,
 		offsetLeft: 0,
 		callback: function(element, state) {
+
+
+			/* -------------------------------------------------- */
+			/* VISIBLE
+			/* -------------------------------------------------- */
 
 			if ( state === "visible" ) {
 
@@ -329,6 +334,8 @@ var utilEmergence = function() {
 				if ( !$isMobile && !$hasTouch ) {
 
 					TweenMax.staggerTo($(element).not(emergenceIgnore).children().not(emergenceIgnore).not(anim).children(), 1, {opacity: 1, delay: 0, ease: Power4.easeOut, overwrite: "false", clearProps:"all"}, 0.12);
+
+					animSceneController();
 
 				}
 
@@ -352,15 +359,15 @@ var utilEmergence = function() {
 
 					self.play();
 
-					//$(this).on("touchstart mouseover", function() {
+				});
 
-						//console.log("Play Video");
-						//$(this)[0].play();
 
-					//});
 
-				}); 
 
+
+			/* -------------------------------------------------- */
+			/* INVISIBLE
+			/* -------------------------------------------------- */
 
 			} else if ( state === "reset" ) {
 
@@ -387,6 +394,13 @@ var utilEmergence = function() {
 
 				}); 
 
+
+
+
+
+			/* -------------------------------------------------- */
+			/* NO RESET
+			/* -------------------------------------------------- */
 
 			} else if ( state === "noreset" ) {
 
@@ -540,4 +554,5 @@ var utilScrollProgress = function() {
 
 }; // END utilScrollProgress
 
-$$(window).on("scroll", _.throttle(utilScrollProgress, $updateInterval, {trailing: $throttleTrail, leading: $throttleLeading} ));
+
+$$(window).on("scroll", _.throttle(utilScrollProgress, $updateInterval, {leading: $throttleLeading, trailing: $throttleTrailing } ));

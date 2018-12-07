@@ -13,7 +13,10 @@ var animCore = function(distance) {
 	//console.log("Running animation controllers.");
 
 	animIconController();
-	animSceneController();
+
+	if (!$hasTouch) {
+		animSceneController();
+	}
 
 }
 

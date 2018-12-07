@@ -1,3 +1,6 @@
+if (!$isMobile && !$hasTouch) {
+
+
 /* -------------------------------------------------- */
 /* CACHE SELECTORS
 /* -------------------------------------------------- */
@@ -64,6 +67,9 @@ var $splitText = new SplitText([animHero.find("h1"),
 			  //.staggerFrom(heroH2SplitText, 0.75, {opacity: 0, y: 80, scale: 0, rotationX: 180, transformOrigin:"0% 50% -50",  ease: Back.easeOut}, 0.01, "-=0.75");
 
 
+	//lHero.delay(1).play();
+
+
 	/* -------------------------------------------------- */
 	/* INTERACTIONS
 	/* -------------------------------------------------- */
@@ -110,13 +116,13 @@ var $welcomeH1SplitText = new SplitText(animWelcome.find("h1"), {type: "words, c
 
 
 var tlWelcome = new TimelineMax({paused: true});
-	tlWelcome.staggerFrom(welcomeH1SplitText, 0.75, {autoAlpha: 0, x: -10, ease: Back.easeOut}, 0.02)
-		  	 .staggerFrom(welcomeParagraphSplitText, 1, {autoAlpha: 0, x: -10, ease: Expo.easeOut}, 0.02, "-=1")
+	tlWelcome.staggerFrom(welcomeH1SplitText, 0.75, {autoAlpha: 0, x: -10, ease: Back.easeOut}, 0.02, "group-01")
+		  	 .staggerFrom(welcomeParagraphSplitText, 1, {autoAlpha: 0, x: -10, ease: Expo.easeOut}, 0.02, "group-01")
 			 .add(
 			  function() {
 
 				$welcomeH1SplitText.revert();
-				//$welcomeParagraphSplitText.revert();
+				$welcomeParagraphSplitText.revert();
 
 			  });
 			  
@@ -163,8 +169,8 @@ var $areYouACandidateH1SplitText = new SplitText(animAreYouACandidate.find("h1")
 	areYouACandidateParagraphSplitText = $areYouACandidateParagraphSplitText.lines;
 
 var tlAreYouACandidate = new TimelineMax({paused: true});
-	tlAreYouACandidate.staggerFrom(areYouACandidateH1SplitText, 0.75, {autoAlpha: 0, x: -10, ease: Back.easeOut}, 0.02)
-					 .staggerFrom(areYouACandidateParagraphSplitText, 0.75, {autoAlpha: 0, x: -10, ease: Back.easeOut}, 0.02)
+	tlAreYouACandidate.staggerFrom(areYouACandidateH1SplitText, 0.75, {autoAlpha: 0, x: -10, ease: Back.easeOut}, 0.02, "group-01")
+					 .staggerFrom(areYouACandidateParagraphSplitText, 0.75, {autoAlpha: 0, x: -10, ease: Back.easeOut}, 0.02, "group-01")
 					.add(
 					  function() {
 
@@ -190,8 +196,8 @@ var $theARTASExperienceH1SplitText = new SplitText(animTheARTASExperience.find("
 	theARTASExperienceParagraphSplitText = $theARTASExperienceParagraphSplitText.lines;
 
 var tlTheARTASExperience = new TimelineMax({paused: true});
-	tlTheARTASExperience.staggerFrom(theARTASExperienceH1SplitText, 0.75, {autoAlpha: 0, x: -10, ease: Back.easeOut}, 0.02)
-		  	 	   		.staggerFrom(theARTASExperienceParagraphSplitText, 1, {autoAlpha: 0, x: -10, ease: Expo.easeOut}, 0.02)
+	tlTheARTASExperience.staggerFrom(theARTASExperienceH1SplitText, 0.75, {autoAlpha: 0, x: -10, ease: Back.easeOut}, 0.02, "group-01")
+		  	 	   		.staggerFrom(theARTASExperienceParagraphSplitText, 1, {autoAlpha: 0, x: -10, ease: Expo.easeOut}, 0.02, "group-01")
 
 					//.from(animTheARTASExperience.find("p"), 1, {autoAlpha: 0, x: -10, ease: Expo.easeOut}, "-=1")
 					 .from(animTheARTASExperience.find(".button"), 1, {autoAlpha: 0, ease: Expo.easeOut})
@@ -384,7 +390,13 @@ var tlWhatSetsARTASApart = new TimelineMax({paused: false});
 /* ACTIONS
 /* -------------------------------------------------- */
 
-//$$(window).on("scrollstart", { latency: $updateInterval, leading: false, trailing: false }, animScenePauseAll);
-$$(window).on("scrollstop", { latency: $updateInterval, leading: false, trailing: false }, animSceneController);
+//$$(window).on("scrollstart", { latency: $updateInterval, leading: $throttleLeading, trailing: $throttleTrailing }, animScenePauseAll);
+//$$(window).on("scrollstart", { latency: $updateInterval, leading: $throttleLeading, trailing: $throttleTrailing }, animSceneController);
+//$$(window).on("scrollstop", { latency: $updateInterval,, leading: $throttleLeading, trailing: $throttleTrailing }, animSceneController);
 
-animScenePauseAll();
+//animScenePauseAll();
+
+// Note: Animation trigger events handled by 'utilEmergence'.
+
+
+}

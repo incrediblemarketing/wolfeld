@@ -333,8 +333,8 @@ var tlMasterTimelineScenes = new TimelineMax();
 
 	} else {
 
-		$$(window).on("scrollstart", { latency: $updateInterval, leading: false, trailing: false }, animIconPauseAll);
-		$$(window).on("scrollstop", { latency: $updateInterval, leading: false, trailing: false }, animIconController);
+		$$(window).on("scrollstart", { latency: $updateInterval }, animIconPauseAll);
+		$$(window).on("scrollstop", { latency: $updateInterval }, animIconController);
 
 		TweenMax.delayedCall($delayInterval, animIconController);
 
